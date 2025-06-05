@@ -7,16 +7,16 @@ import { selectLoggedIn } from "@/redux/auth/selectors";
 import UserPage from "@/pages/UserPage/UserPage";
 
 export default function User() {
-  const isLoggedIn = useSelector(selectLoggedIn); // твій selector з redux
+  const isLoggedIn = useSelector(selectLoggedIn);
   const router = useRouter();
 
   useEffect(() => {
     if (!isLoggedIn) {
-      router.push("/"); // редірект на головну, якщо не залогінений
+      router.push("/");
     }
   }, [isLoggedIn, router]);
 
-  if (!isLoggedIn) return null; // можна вставити <Loader /> або просто нічого
+  if (!isLoggedIn) return null;
 
   return <UserPage />;
 }

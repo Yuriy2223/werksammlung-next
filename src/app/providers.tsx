@@ -1,4 +1,4 @@
-"use client"; // цей файл виконується на клієнті — бо є state, ефекти, redux
+"use client";
 
 import { ReactNode } from "react";
 import { Provider } from "react-redux";
@@ -9,19 +9,12 @@ import { GlobalStyles } from "@/styles/GlobalStyles";
 import { ToastContainer } from "react-toastify";
 
 export function Providers({ children }: { children: ReactNode }) {
-  // тут обгортаємо все додатком — аналог обгортки в main.tsx
   return (
     <Provider store={store}>
-      {" "}
-      {/* Redux store */}
       <PersistGate loading={null} persistor={persistor}>
-        {" "}
-        {/* Redux-persist */}
         <ThemeWrapper>
-          {" "}
-          {/* твоя тема */}
-          <GlobalStyles /> {/* глобальні стилі */}
-          {children} {/* сюди потрапляє все з app/layout.tsx */}
+          <GlobalStyles />
+          {children}
           <ToastContainer
             position="top-center"
             autoClose={2000}

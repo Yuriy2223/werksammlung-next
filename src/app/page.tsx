@@ -1,9 +1,9 @@
-"use client"; // ця сторінка клієнтська, бо імпортує React компоненти
+"use client";
 
-import HomePage from "@/pages/HomePage/HomePage"; // старий компонент
+import HomePage from "@/pages/HomePage/HomePage";
 
 export default function Page() {
-  return <HomePage />; // просто обгортаємо у Next сторінку
+  return <HomePage />;
 }
 
 /******************************************************** */
