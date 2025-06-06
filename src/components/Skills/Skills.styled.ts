@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { Container } from "../../shared/Container";
-import { Link } from "react-router-dom";
+// import Link from "next/link";
 
 export const SkillsSections = styled.section`
   background-color: ${({ theme }) => theme.bgPrimary};
@@ -40,7 +40,8 @@ export const SkillList = styled(motion.ul)`
   flex-direction: column;
   gap: 10px;
 `;
-export const SkillLink = styled(Link)`
+// export const SkillLink = styled(Link)`
+export const SkillLink = styled.a`
   display: inline-flex;
   align-items: center;
   gap: 16px;

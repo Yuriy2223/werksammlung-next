@@ -7,7 +7,7 @@
 //   await Instance.post("/api/contacts/me", data);
 // };
 
-import { contactMeFormData } from "../App.type";
+import { contactMeFormData } from "@/types";
 import { privateInstance } from "./Api";
 
 export const sendMeContactApi = async (

@@ -5,7 +5,7 @@ import {
   RequestResetData,
   ResetPasswordData,
   User,
-} from "../App.type";
+} from "@/types";
 
 export const registerUserApi = async (
   data: RegisterData

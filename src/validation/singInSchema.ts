@@ -1,5 +1,6 @@
+import { LoginData } from "@/types";
 import * as yup from "yup";
-import { LoginData } from "../App.type";
+// import { LoginData } from "../App.type";
 
 export const singInSchema = (
   t: (key: string) => string

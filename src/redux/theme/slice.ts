@@ -1,18 +1,45 @@
+// import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+// import { ThemeType } from "../../styles/Theme";
+
+// const getInitialTheme = (): ThemeType => {
+//   return (localStorage.getItem("theme") as ThemeType) || "dark";
+// };
+
+// const initialState = { theme: getInitialTheme() };
+
+// const themeSlice = createSlice({
+//   name: "theme",
+//   initialState,
+//   reducers: {
+//     setTheme: (state, action: PayloadAction<ThemeType>) => {
+//       localStorage.setItem("theme", action.payload);
+//       state.theme = action.payload;
+//     },
+//   },
+// });
+
+// export const { setTheme } = themeSlice.actions;
+// export const themeReducer = themeSlice.reducer;
+
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ThemeType } from "../../styles/Theme";
 
-const getInitialTheme = (): ThemeType => {
-  return (localStorage.getItem("theme") as ThemeType) || "dark";
-};
+export interface ThemeState {
+  theme: ThemeType | null;
+}
 
-const initialState = { theme: getInitialTheme() };
+const initialState: ThemeState = {
+  theme: null,
+};
 
 const themeSlice = createSlice({
   name: "theme",
   initialState,
   reducers: {
     setTheme: (state, action: PayloadAction<ThemeType>) => {
-      localStorage.setItem("theme", action.payload);
+      if (typeof window !== "undefined") {
+        localStorage.setItem("theme", action.payload);
+      }
       state.theme = action.payload;
     },
   },

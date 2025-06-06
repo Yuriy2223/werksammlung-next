@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { FileText } from "lucide-react";
 import { useSelector } from "react-redux";
@@ -7,7 +8,7 @@ import { selectProfile } from "../../redux/profile/selectors";
 import { useViewportAmount } from "../../hooks/useViewportAmount";
 import { useIsDesktop } from "../../hooks/useIsDesktop";
 import { API_URL } from "../../services/Api";
-import { Languages } from "../../App.type";
+import { selectLanguage } from "@/redux/language/selectors";
 import {
   AboutBtn,
   AboutContainer,
@@ -22,14 +23,15 @@ import {
 } from "./About.styled";
 
 export const About = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const profile = useSelector(selectProfile);
   const viewportAmount = useViewportAmount();
   const isDesktop = useIsDesktop();
-  const lang = i18n.language.toLowerCase() as Languages;
-  const fullName = `${profile?.firstName?.[lang] || ""} ${
-    profile?.lastName?.[lang] || ""
-  }`;
+  const currentLanguage = useSelector(selectLanguage);
+  const firstName = profile?.firstName?.[currentLanguage];
+  const lastName = profile?.lastName?.[currentLanguage];
+  const about = profile?.about?.[currentLanguage];
+  const fullName = `${firstName} ${lastName}`;
 
   const handleOpenCV = () => {
     if (!profile?._id) return;
@@ -48,7 +50,14 @@ export const About = () => {
             style={{ flex: 1 }}
           >
             <WrapperImg>
-              <img src={profile?.avatarUrl} alt={`${fullName} portrait`} />
+              {profile?.avatarUrl && (
+                <Image
+                  src={profile.avatarUrl}
+                  alt={`${fullName} portrait`}
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </WrapperImg>
           </motion.div>
 
@@ -83,14 +92,12 @@ export const About = () => {
                       </AboutBtn>
                     </AboutBtnWrapper>
                   </motion.div>
-
                   <SocialContact />
                 </ToContact>
               </ContextInner>
             </WrapperContext>
           </motion.div>
         </AboutWrapTop>
-
         <AboutWrapBottom>
           <motion.div
             initial={isDesktop ? { opacity: 0, y: 200 } : { opacity: 0 }}
@@ -98,7 +105,7 @@ export const About = () => {
             transition={{ duration: 1 }}
             viewport={{ once: false, amount: viewportAmount }}
           >
-            <p>{profile?.about[lang]}</p>
+            <p>{about}</p>
           </motion.div>
         </AboutWrapBottom>
       </AboutContainer>

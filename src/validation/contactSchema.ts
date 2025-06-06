@@ -1,5 +1,6 @@
+import { contactMeFormData } from "@/types";
 import * as yup from "yup";
-import { contactMeFormData } from "../App.type";
+// import { contactMeFormData } from "../App.type";
 
 export const contactSchema = (
   t: (key: string) => string

@@ -1,4 +1,7 @@
+"use client";
+
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import {
   Canvas,
   NotFoundContainer,
@@ -24,7 +27,6 @@ const NotFoundPage = () => {
     const draw = () => {
       ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      /* ctx.fillStyle = "#0F0"; */
       ctx.fillStyle = "#00f0ffcc";
       letters.forEach((y_pos, index) => {
         const text = String.fromCharCode(0x30a0 + Math.random() * 96);
@@ -42,8 +44,9 @@ const NotFoundPage = () => {
     <NotFoundContainer>
       <Canvas ref={canvasRef} />
       <Text>Ooops! This page not found :(</Text>
-
-      <ToNavLink to="/">To home page</ToNavLink>
+      <ToNavLink as={Link} href="/">
+        To home page
+      </ToNavLink>
     </NotFoundContainer>
   );
 };

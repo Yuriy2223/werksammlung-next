@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { switchLanguage } from "../../redux/language/slice";
 import { selectLanguage } from "../../redux/language/selectors";
 import { useTranslation } from "react-i18next";
-import { Language } from "../../App.type";
+import { Language } from "@/types";
 import styled from "styled-components";
 
 export const BtnLang = styled(Button)`
@@ -36,7 +36,7 @@ export const LanguageSwitcher: React.FC<Props> = ({ onLanguageChange }) => {
 
   return (
     <BtnLang onClick={handleSwitchLanguage}>
-      {t("buttons.lang")}: <span>{currentLang}</span>
+      {t("buttons.lang")}: <span>{currentLang.toUpperCase()}</span>
     </BtnLang>
   );
 };

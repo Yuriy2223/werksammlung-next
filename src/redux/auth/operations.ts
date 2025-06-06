@@ -7,7 +7,7 @@ import {
   RequestResetData,
   ResetPasswordData,
   User,
-} from "../../App.type";
+} from "@/types";
 import {
   currentUserApi,
   loginUserApi,

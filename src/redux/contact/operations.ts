@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { contactMeFormData } from "../../App.type";
+import { contactMeFormData } from "@/types";
 import { sendMeContactApi } from "../../services/contactApi";
 import { isAxiosError } from "axios";
 

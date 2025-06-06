@@ -11,8 +11,9 @@ import { selectModalType } from "../../redux/modal/selectors";
 import { Input } from "../../shared/Input";
 import { singInSchema } from "../../validation/singInSchema";
 import { loginUser } from "../../redux/auth/operations";
-import { LoginData } from "../../App.type";
-import { useNavigate } from "react-router-dom";
+// import { LoginData } from "../../App.type";
+// import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import {
   BtnWrap,
   CancelBtn,
@@ -23,10 +24,12 @@ import {
   ModalWrap,
   PasswordToggleButton,
 } from "./SignIn.styled";
+import { LoginData } from "@/types";
 
 export const ModalSignIn = () => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+  const router = useRouter();
   const modalType = useSelector(selectModalType);
   const { t, i18n } = useTranslation();
   const [showPassword, setShowPassword] = useState(false);
@@ -67,7 +70,8 @@ export const ModalSignIn = () => {
       reset();
       clearErrors();
       dispatch(closeModal());
-      navigate("/user");
+      // navigate("/user");
+      router.push("/user");
     } catch (error) {
       toast.error(
         error instanceof Error ? error.message : t("modal.login.message.no")

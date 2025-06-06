@@ -2,18 +2,25 @@ import { useEffect, useState } from "react";
 import { LogoContainer } from "./Logo.styled";
 import { selectProfile } from "../../redux/profile/selectors";
 import { useSelector } from "react-redux";
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
+import Link from "next/link";
+import { selectLanguage } from "@/redux/language/selectors";
 
 export const Logo = () => {
   const [displayedText, setDisplayedText] = useState("");
   const [index, setIndex] = useState(0);
-  const { i18n } = useTranslation();
+  // const { i18n } = useTranslation();
   const profile = useSelector(selectProfile);
-  const lang = i18n.language.toLowerCase() as "en" | "ua" | "de";
-  const fullName = `${profile?.firstName?.[lang] || ""} ${
-    profile?.lastName?.[lang] || ""
-  }`;
+  // const lang = i18n.language.toLowerCase() as "en" | "ua" | "de";
+  // const lang = i18n.language;
+  // const fullName = `${profile?.firstName?.[lang] || ""} ${
+  //   profile?.lastName?.[lang] || ""
+  // }`;
+  const currentLanguage = useSelector(selectLanguage);
+  const firstName = profile?.firstName?.[currentLanguage] || "";
+  const lastName = profile?.lastName?.[currentLanguage] || "";
 
+  const fullName = `${firstName} ${lastName}`;
   useEffect(() => {
     let typingTimeout: ReturnType<typeof setTimeout>;
 
@@ -32,15 +39,22 @@ export const Logo = () => {
     return () => clearTimeout(typingTimeout);
   }, [index, fullName]);
 
+  useEffect(() => {
+    setDisplayedText("");
+    setIndex(0);
+  }, [fullName]);
+
   return (
-    <LogoContainer
-      to="/"
-      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-    >
-      <p>
-        {displayedText}
-        <span className="cursor">|</span>
-      </p>
-    </LogoContainer>
+    <Link href="/" passHref>
+      <LogoContainer
+        // to="/"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      >
+        <p>
+          {displayedText}
+          <span className="cursor">|</span>
+        </p>
+      </LogoContainer>
+    </Link>
   );
 };

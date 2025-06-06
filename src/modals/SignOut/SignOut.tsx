@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../redux/store";
 import { toast } from "react-toastify";
 import { closeModal } from "../../redux/modal/slice";
@@ -13,12 +13,14 @@ import {
   ModalTitle,
   ModalWrap,
 } from "./SignOut.styled";
+import { useRouter } from "next/navigation";
 
 export const ModalSignOut = () => {
   const dispatch = useAppDispatch();
   const modalType = useSelector(selectModalType);
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+  const router = useRouter();
 
   if (modalType !== "ModalSignOut") return null;
 
@@ -27,7 +29,8 @@ export const ModalSignOut = () => {
       await dispatch(logoutUser()).unwrap();
       toast.success(t("modal.logout.message.success"));
       dispatch(closeModal());
-      navigate("/");
+      // navigate("/");
+      router.push("/");
     } catch (error: unknown) {
       const message =
         typeof error === "string"

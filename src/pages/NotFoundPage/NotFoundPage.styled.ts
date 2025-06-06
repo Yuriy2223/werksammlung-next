@@ -1,5 +1,5 @@
-import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import Link from "next/link";
 
 export const NotFoundContainer = styled.div`
   height: 100vh;
@@ -10,24 +10,28 @@ export const NotFoundContainer = styled.div`
   flex-direction: column;
   position: relative;
 `;
+
 export const Canvas = styled.canvas`
   position: absolute;
   top: 0;
   left: 0;
 `;
+
 export const Text = styled.div`
   z-index: 1;
   font-size: 34px;
   color: ${({ theme }) => theme.textPrimary};
   margin-bottom: 30px;
 `;
-export const ToNavLink = styled(NavLink)`
+
+export const ToNavLink = styled(Link)`
   padding: 12px 20px;
   border-radius: 12px;
   border: 1px solid ${({ theme }) => theme.textPrimary};
   color: ${({ theme }) => theme.textPrimary};
   background-color: ${({ theme }) => theme.bgSecondary};
   z-index: 1;
+  text-decoration: none;
 
   &:hover,
   &:active {
