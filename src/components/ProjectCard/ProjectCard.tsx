@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Github, Globe } from "lucide-react";
-import { Languages, Project } from "../../App.type";
+import { Language, Project } from "@/types";
+// import { Languages, Project } from "../../App.type";
 import {
   BackFace,
   CardWrapper,
@@ -19,7 +20,7 @@ import {
 
 interface ProjectCardProps {
   project: Project;
-  lang: Languages;
+  lang: Language;
 }
 
 const isTouchDevice = () => {

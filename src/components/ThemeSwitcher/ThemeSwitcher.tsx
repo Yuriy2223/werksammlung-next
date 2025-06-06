@@ -2,11 +2,11 @@ import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { Sun, CloudSun, Cloud, Moon } from "lucide-react";
 import styled from "styled-components";
-import { ThemeType } from "../../styles/Theme.ts";
-import { selectTheme } from "../../redux/theme/selectors.ts";
-import { useAppDispatch } from "../../redux/store.ts";
-import { setTheme } from "../../redux/theme/slice.ts";
-import { Button } from "../../shared/Button.tsx";
+import { ThemeType } from "@/styles/Theme";
+import { Button } from "@/shared/Button";
+import { useAppDispatch } from "@/redux/store";
+import { selectTheme } from "@/redux/theme/selectors";
+import { setTheme } from "@/redux/theme/slice";
 
 const themeOrder: ThemeType[] = ["dark", "grey", "blue", "green"];
 

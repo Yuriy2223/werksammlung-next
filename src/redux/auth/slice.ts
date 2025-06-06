@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf, PayloadAction } from "@reduxjs/toolkit";
-import { User } from "../../App.type";
+import { User } from "@/types";
 import {
   registerUser,
   loginUser,

@@ -3,7 +3,7 @@ import { store } from "../redux/store";
 import { logoutUser, refreshToken } from "../redux/auth/operations";
 import { toast } from "react-toastify";
 
-export const API_URL = import.meta.env.VITE_API_URL;
+export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const publicInstance = axios.create({
   baseURL: API_URL,

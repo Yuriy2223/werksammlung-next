@@ -149,3 +149,5 @@ export const Input = forwardRef<HTMLInputElement, TextInputProps>(
     );
   }
 );
+
+Input.displayName = "Input";

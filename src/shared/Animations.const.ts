@@ -56,8 +56,10 @@ export const containVariants = {
   hidden: {},
   visible: {
     transition: {
-      delayChildren: 0.4,
-      staggerChildren: 0.6,
+      // delayChildren: 0.4,
+      delayChildren: 0.2,
+      // staggerChildren: 0.6,
+      staggerChildren: 0.4,
     },
   },
 };

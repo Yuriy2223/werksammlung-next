@@ -1,5 +1,5 @@
-import { configureStore } from "@reduxjs/toolkit";
-import storage from "redux-persist/lib/storage";
+import { configureStore, Reducer } from "@reduxjs/toolkit";
+import storage from "../hooks/createWebStorage";
 import { useDispatch } from "react-redux";
 import {
   persistStore,
@@ -11,12 +11,20 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
+
 import { profileReducer } from "./profile/slice";
-import { themeReducer } from "./theme/slice";
+import { themeReducer, ThemeState } from "./theme/slice";
 import { modalReducer } from "./modal/slice";
-import { languageReducer } from "./language/slice";
+import { languageReducer, LanguageState } from "./language/slice";
 import { contactReduser } from "./contact/slice";
 import { authReducer } from "./auth/slice";
+
+type PersistPartial = {
+  _persist: {
+    version: number;
+    rehydrated: boolean;
+  };
+};
 
 const themePersistConfig = {
   key: "theme",
@@ -28,11 +36,20 @@ const languagePersistConfig = {
   storage,
 };
 
-const persistedThemeReducer = persistReducer(themePersistConfig, themeReducer);
-const persistedLanguageReducer = persistReducer(
-  languagePersistConfig,
-  languageReducer
-);
+const persistedThemeReducer: Reducer<ThemeState & PersistPartial> =
+  typeof window !== "undefined"
+    ? (persistReducer(themePersistConfig, themeReducer) as unknown as Reducer<
+        ThemeState & PersistPartial
+      >)
+    : (themeReducer as unknown as Reducer<ThemeState & PersistPartial>);
+
+const persistedLanguageReducer: Reducer<LanguageState & PersistPartial> =
+  typeof window !== "undefined"
+    ? (persistReducer(
+        languagePersistConfig,
+        languageReducer
+      ) as unknown as Reducer<LanguageState & PersistPartial>)
+    : (languageReducer as unknown as Reducer<LanguageState & PersistPartial>);
 
 export const store = configureStore({
   reducer: {
@@ -54,4 +71,6 @@ export const store = configureStore({
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
 export const useAppDispatch = () => useDispatch<AppDispatch>();
-export const persistor = persistStore(store);
+
+export const persistor =
+  typeof window !== "undefined" ? persistStore(store) : null;

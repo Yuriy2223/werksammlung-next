@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchProfile } from "./operations";
-import { Profile } from "../../App.type";
+import { Profile } from "@/types";
 
 export interface UserState {
   profile: Profile | null;

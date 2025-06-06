@@ -6,7 +6,7 @@ import { SubTitle } from "../../shared/SubTitle";
 import { Title } from "../../shared/Title";
 import { selectProfile } from "../../redux/profile/selectors";
 import { useViewportAmount } from "../../hooks/useViewportAmount";
-import { Languages } from "../../App.type";
+import { Category, Language, Skill } from "@/types";
 import {
   cardVariant,
   iconMap,
@@ -25,7 +25,8 @@ import {
 
 export const Skills = () => {
   const { t, i18n } = useTranslation();
-  const lang = i18n.language.toLowerCase() as Languages;
+  // const lang = i18n.language.toLowerCase() as Language;
+  const lang = i18n.language as Language;
   const profile = useSelector(selectProfile);
   const viewportAmount = useViewportAmount();
 
@@ -36,53 +37,55 @@ export const Skills = () => {
         <SubTitle>{t("skills.subtitle")}</SubTitle>
 
         <Categories>
-          {profile?.skills?.map(({ _id: categoryId, category, items }) => {
-            const categoryName =
-              typeof category === "object" && category !== null
-                ? category[lang]
-                : category;
+          {profile?.skills?.map(
+            ({ _id: categoryId, category, items }: Category) => {
+              const categoryName =
+                typeof category === "object" && category !== null
+                  ? category[lang]
+                  : category;
 
-            return (
-              <SkillsCard
-                key={categoryId}
-                variants={cardVariant}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: false, amount: viewportAmount }}
-                whileHover={{
-                  scale: 1.03,
-                  boxShadow: "0 0 20px currentColor",
-                }}
-              >
-                <CategoryTitle>{categoryName}</CategoryTitle>
-
-                <SkillList
-                  variants={listVariant}
+              return (
+                <SkillsCard
+                  key={categoryId}
+                  variants={cardVariant}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: false, amount: viewportAmount }}
+                  whileHover={{
+                    scale: 1.03,
+                    boxShadow: "0 0 20px currentColor",
+                  }}
                 >
-                  {items.map(({ name, link, _id: skillId }) => {
-                    const skillName = name?.[lang];
-                    if (!skillName) return null;
-                    const Icon = iconMap[skillName] ?? CheckCircle;
+                  <CategoryTitle>{categoryName}</CategoryTitle>
 
-                    return (
-                      <motion.li key={skillId} variants={itemVariant}>
-                        <SkillLink
-                          to={link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Icon /> {skillName}
-                        </SkillLink>
-                      </motion.li>
-                    );
-                  })}
-                </SkillList>
-              </SkillsCard>
-            );
-          })}
+                  <SkillList
+                    variants={listVariant}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, amount: viewportAmount }}
+                  >
+                    {items.map(({ name, link, _id: skillId }: Skill) => {
+                      const skillName = name?.[lang];
+                      if (!skillName) return null;
+                      const Icon = iconMap[skillName] ?? CheckCircle;
+
+                      return (
+                        <motion.li key={skillId} variants={itemVariant}>
+                          <SkillLink
+                            href={link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <Icon /> {skillName}
+                          </SkillLink>
+                        </motion.li>
+                      );
+                    })}
+                  </SkillList>
+                </SkillsCard>
+              );
+            }
+          )}
         </Categories>
       </SkillsContainer>
     </SkillsSections>

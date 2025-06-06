@@ -9,7 +9,7 @@ import { Input } from "../../shared/Input";
 import { Textarea } from "../../shared/Textarea";
 import { Title } from "../../shared/Title";
 import { SubTitle } from "../../shared/SubTitle";
-import { contactMeFormData } from "../../App.type";
+import { contactMeFormData } from "@/types";
 import { sendMeContact } from "../../redux/contact/operations";
 import { useAppDispatch } from "../../redux/store";
 import {

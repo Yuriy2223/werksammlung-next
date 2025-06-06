@@ -1,7 +1,7 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 import { Container } from "../../shared/Container";
 import { Button } from "../../shared/Button";
-import { motion } from "framer-motion";
 
 export const AboutSection = styled.section`
   background-color: ${({ theme }) => theme.bgSecondary};
@@ -55,25 +55,24 @@ export const AboutWrapBottom = styled.div`
   }
 `;
 export const WrapperImg = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  img {
-    flex-shrink: 0;
-    width: 290px;
-    height: 290px;
-    border-radius: 12px;
+  width: 290px;
+  height: 290px;
+  border-radius: 12px;
+  overflow: hidden;
 
-    @media (min-width: 768px) {
-      width: 440px;
-      height: 440px;
-    }
+  @media (min-width: 768px) {
+    width: 440px;
+    height: 440px;
+  }
 
-    @media (min-width: 1280px) {
-      width: 500px;
-      height: 500px;
-    }
+  @media (min-width: 1280px) {
+    width: 500px;
+    height: 500px;
   }
 `;
 export const WrapperContext = styled.div`

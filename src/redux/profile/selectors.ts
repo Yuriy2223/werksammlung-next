@@ -1,4 +1,4 @@
-import { Profile } from "../../App.type";
+import { Profile } from "@/types";
 import { RootState } from "../store";
 
 export const selectProfile = (state: RootState): Profile | null =>

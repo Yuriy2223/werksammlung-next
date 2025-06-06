@@ -1,5 +1,6 @@
-export type Language = "EN" | "DE" | "UA";
-export type Languages = "en" | "de" | "ua";
+// export type Language = "EN" | "DE" | "UA";
+export type Language = "en" | "de" | "ua";
+// export type Languages = "en" | "de" | "ua";
 
 export interface User {
   id: string;

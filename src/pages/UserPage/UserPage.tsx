@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import { parseISO, format, isValid } from "date-fns";
 import { Stats } from "./types";
 import { privateInstance } from "../../services/Api";
@@ -21,9 +22,15 @@ const UserPage = () => {
   const [endDate, setEndDate] = useState<Date | null>(null);
   const [selectedDay, setSelectedDay] = useState<Date | null>(null);
   const isLoggedIn = useSelector(selectLoggedIn);
+  const router = useRouter();
 
+  // useEffect(() => {
+  //   if (!isLoggedIn) return;
   useEffect(() => {
-    if (!isLoggedIn) return;
+    if (!isLoggedIn) {
+      router.replace("/"); // редірект, якщо не залогінений
+      return;
+    }
 
     const fetchStats = async () => {
       try {
@@ -37,11 +44,15 @@ const UserPage = () => {
       }
     };
 
+    //   fetchStats();
+    // }, [isLoggedIn]);
     fetchStats();
-  }, [isLoggedIn]);
+  }, [isLoggedIn, router]);
 
-  if (!isLoggedIn) return <Navigate to="/" replace />;
+  // if (!isLoggedIn) return <Navigate to="/" replace />;
+  // if (loading) return <UserPageContainer>Завантаження...</UserPageContainer>;
   if (loading) return <UserPageContainer>Завантаження...</UserPageContainer>;
+
   if (!stats)
     return <UserPageContainer>Статистика недоступна...</UserPageContainer>;
 

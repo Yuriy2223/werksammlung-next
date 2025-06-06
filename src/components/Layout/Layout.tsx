@@ -1,25 +1,25 @@
-import { Outlet } from "react-router-dom";
+"use client";
+
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
-import { useTrackStats } from "../../hooks/useTrackStats";
 import { ModalUniversal } from "../../modals/UniversalModal/UniversalModal";
+import { useTrackStats } from "@/hooks/useTrackStats";
 import {
-  FooterWrapper,
-  HeaderWrapper,
   LayoutWrapper,
+  HeaderWrapper,
   MainWrapper,
+  FooterWrapper,
 } from "./Layout.styled";
 
-export const Layout = () => {
+export const Layout = ({ children }: { children: React.ReactNode }) => {
   useTrackStats();
+
   return (
     <LayoutWrapper>
       <HeaderWrapper>
         <Header />
       </HeaderWrapper>
-      <MainWrapper>
-        <Outlet />
-      </MainWrapper>
+      <MainWrapper>{children}</MainWrapper>
       <FooterWrapper>
         <Footer />
       </FooterWrapper>

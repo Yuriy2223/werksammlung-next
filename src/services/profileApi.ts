@@ -6,7 +6,7 @@
 //   return response.data;
 // };
 
-import { Profile } from "../App.type";
+import { Profile } from "@/types";
 import { publicInstance } from "./Api";
 
 export const fetchProfileApi = async (): Promise<Profile> => {
