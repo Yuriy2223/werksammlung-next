@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-// import { Navigate } from "react-router-dom";
 import { useRouter } from "next/navigation";
 import { parseISO, format, isValid } from "date-fns";
 import { Stats } from "./types";
@@ -24,11 +23,9 @@ const UserPage = () => {
   const isLoggedIn = useSelector(selectLoggedIn);
   const router = useRouter();
 
-  // useEffect(() => {
-  //   if (!isLoggedIn) return;
   useEffect(() => {
     if (!isLoggedIn) {
-      router.replace("/"); // редірект, якщо не залогінений
+      router.replace("/");
       return;
     }
 
@@ -44,13 +41,9 @@ const UserPage = () => {
       }
     };
 
-    //   fetchStats();
-    // }, [isLoggedIn]);
     fetchStats();
   }, [isLoggedIn, router]);
 
-  // if (!isLoggedIn) return <Navigate to="/" replace />;
-  // if (loading) return <UserPageContainer>Завантаження...</UserPageContainer>;
   if (loading) return <UserPageContainer>Завантаження...</UserPageContainer>;
 
   if (!stats)
