@@ -7,7 +7,7 @@ import { SocialContact } from "../SocialBlock/SocialBlock";
 import { selectProfile } from "../../redux/profile/selectors";
 import { useViewportAmount } from "../../hooks/useViewportAmount";
 import { useIsDesktop } from "../../hooks/useIsDesktop";
-import { API_URL } from "../../services/Api";
+import { API_URL } from "@/services/Api";
 import { selectLanguage } from "@/redux/language/selectors";
 import {
   AboutBtn,
@@ -34,8 +34,12 @@ export const About = () => {
   const fullName = `${firstName} ${lastName}`;
 
   const handleOpenCV = () => {
-    if (!profile?._id) return;
-    window.open(`${API_URL}${profile.viewCV}`, "_blank");
+    if (!profile?.viewCV) {
+      console.warn("CV is not available");
+      return;
+    }
+    const url = `${API_URL}${profile.viewCV}`;
+    window.open(url, "_blank");
   };
 
   return (
@@ -53,6 +57,7 @@ export const About = () => {
               {profile?.avatarUrl && (
                 <Image
                   src={profile.avatarUrl}
+                  // src={`${API_URL}${profile.avatarUrl}`}
                   alt={`${fullName} portrait`}
                   fill
                   style={{ objectFit: "cover" }}
