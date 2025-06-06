@@ -11,8 +11,8 @@ import {
 import { ThemeWrapper } from "@/components/Theme/ThemeWrapper";
 import { GlobalStyles } from "@/styles/GlobalStyles";
 import { ToastContainer } from "react-toastify";
-import { AppGuard } from "@/components/AppGuard";
-import { ThemeInitializer } from "./ThemeInitializer";
+import { AppGuard } from "@/components/AppGuard/AppGuard";
+import { ThemeInitializer } from "../../app/ThemeInitializer";
 
 export function Providers({ children }: { children: ReactNode }) {
   const content = (
