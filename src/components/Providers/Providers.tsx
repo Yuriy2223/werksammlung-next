@@ -1,8 +1,6 @@
 "use client";
 
-// import "@/lib/i18n";
-import "../../lib/i18n/i18n";
-
+import "@/lib/i18n/i18n";
 import { ReactNode } from "react";
 import { Provider } from "react-redux";
 import { store } from "@/redux/store";
@@ -29,17 +27,5 @@ export function Providers({ children }: { children: ReactNode }) {
     </ThemeWrapper>
   );
 
-  return (
-    // <Provider store={store}>
-    //   {typeof window !== "undefined" && persistor ? (
-    //     <PersistGate loading={null} persistor={persistor}>
-    //       {content}
-    //     </PersistGate>
-    //   ) : (
-    //     content
-    //   )}
-    // </Provider>
-
-    <Provider store={store}>{content}</Provider>
-  );
+  return <Provider store={store}>{content}</Provider>;
 }

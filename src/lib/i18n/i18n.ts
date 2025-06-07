@@ -19,7 +19,8 @@ if (!i18n.isInitialized) {
       },
       detection: {
         order: ["localStorage", "navigator"],
-        caches: ["localStorage"],
+        caches: [],
+        // caches: ["localStorage"],
       },
     });
 }

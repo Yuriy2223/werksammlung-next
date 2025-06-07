@@ -1,6 +1,5 @@
 import { Button } from "@/shared/Button";
 import styled from "styled-components";
-// import { Button } from "../../shared/Button";
 
 export const UserActionsWrapper = styled.div`
   display: flex;
