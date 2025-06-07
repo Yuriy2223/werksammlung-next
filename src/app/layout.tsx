@@ -1,6 +1,5 @@
 import StyledComponentsRegistry from "@/lib/registry";
-import { Providers } from "../components/Providers/Providers";
-import { Layout } from "@/components/Layout/Layout";
+import { Providers } from "@/components/Providers/Providers";
 
 export const metadata = {
   title: "Fullstack Developer Portfolio | Your Name",
@@ -34,9 +33,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <StyledComponentsRegistry>
-          <Providers>
-            <Layout>{children}</Layout>
-          </Providers>
+          <Providers>{children}</Providers>
         </StyledComponentsRegistry>
       </body>
     </html>

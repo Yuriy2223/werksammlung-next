@@ -1,8 +1,6 @@
 "use client";
 
-// import "@/lib/i18n";
-import "../../lib/i18n/i18n";
-
+import "@/lib/i18n/i18n";
 import { ReactNode } from "react";
 import { Provider } from "react-redux";
 import { store } from "@/redux/store";
