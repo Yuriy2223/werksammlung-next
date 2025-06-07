@@ -27,17 +27,5 @@ export function Providers({ children }: { children: ReactNode }) {
     </ThemeWrapper>
   );
 
-  return (
-    // <Provider store={store}>
-    //   {typeof window !== "undefined" && persistor ? (
-    //     <PersistGate loading={null} persistor={persistor}>
-    //       {content}
-    //     </PersistGate>
-    //   ) : (
-    //     content
-    //   )}
-    // </Provider>
-
-    <Provider store={store}>{content}</Provider>
-  );
+  return <Provider store={store}>{content}</Provider>;
 }
