@@ -8,10 +8,21 @@
 // };
 
 import { contactMeFormData } from "@/types";
-import { privateInstance } from "./Api";
+// import { publicInstance } from "./Api";
+// import { privateInstance } from "./Api";
+import axios from "axios";
+
+const baseConfig = {
+  baseURL: "",
+  headers: { "Content-Type": "application/json" },
+  withCredentials: true,
+};
+
+export const publicInstance = axios.create(baseConfig);
 
 export const sendMeContactApi = async (
   data: contactMeFormData
 ): Promise<void> => {
-  await privateInstance.post("/api/contacts/me", data);
+  // await privateInstance.post("/api/contacts", data);
+  await publicInstance.post("/api/contacts", data);
 };

@@ -1,7 +1,7 @@
+import { isAxiosError } from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { contactMeFormData } from "@/types";
 import { sendMeContactApi } from "../../services/contactApi";
-import { isAxiosError } from "axios";
 
 export const sendMeContact = createAsyncThunk<
   void,
