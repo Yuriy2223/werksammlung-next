@@ -68,7 +68,6 @@ export const LanguageSwitcher: React.FC<Props> = ({ onLanguageChange }) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const currentLang = useSelector(selectLanguage);
-
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   const handleSwitchLanguage = () => {
