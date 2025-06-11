@@ -24,6 +24,9 @@ export function Providers({ children }: { children: ReactNode }) {
         closeOnClick
         pauseOnHover
         draggable
+        pauseOnFocusLoss={false}
+        limit={3}
+        theme="colored"
       />
     </ThemeWrapper>
   );
