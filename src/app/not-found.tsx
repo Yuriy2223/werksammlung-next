@@ -1,10 +1,3 @@
-// "use client";
-
-// import NotFoundPage from "@/pages/NotFoundPage/NotFoundPage";
-
-// export default function NotFound() {
-//   return <NotFoundPage />;
-// }
 "use client";
 
 import { useEffect, useRef } from "react";
