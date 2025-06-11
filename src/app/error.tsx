@@ -1,11 +1,53 @@
 "use client";
 
 import { useEffect } from "react";
+import styled, { keyframes } from "styled-components";
+import { RotateCcw } from "lucide-react";
+import { Button } from "@/shared/Button";
+
+const fadeIn = keyframes`
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+`;
+
+const Wrapper = styled.div`
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: ${({ theme }) => theme.bgPrimary};
+  color: ${({ theme }) => theme.textPrimary};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: ${fadeIn} 0.5s ease-out;
+`;
+
+const Title = styled.h1`
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 16px;
+
+  @media (min-width: 640px) {
+    font-size: 3rem;
+  }
+`;
+
+const Message = styled.p`
+  max-width: 500px;
+  margin-bottom: 30px;
+`;
+
+const RetryButton = styled(Button)`
+  width: 300px;
+  gap: 12px;
+  font-weight: 600;
+`;
 
 export default function GlobalError({
   error,
-}: // reset,
-{
+  reset,
+}: {
   error: Error;
   reset: () => void;
 }) {
@@ -14,23 +56,15 @@ export default function GlobalError({
   }, [error]);
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center bg-red-50 px-6 text-center">
-      <h1 className="text-5xl font-extrabold text-red-700 mb-4 drop-shadow-md select-none">
-        🛑 Упс! Помилка
-      </h1>
-      <p className="max-w-md text-red-800 text-lg mb-8 select-text">
-        {error.message || "Щось пішло не так. Будь ласка, спробуйте знову."}
-      </p>
-      {/* <button
-        onClick={() => reset()}
-        className="inline-block rounded-lg bg-red-600 px-8 py-3 text-white text-lg font-semibold shadow-lg
-                   hover:bg-red-700 hover:scale-105 active:scale-95 transition-transform duration-200 ease-in-out
-                   focus:outline-none focus:ring-4 focus:ring-red-300"
-        aria-label="Повторити спробу"
-        autoFocus
-      >
-        Спробувати ще раз
-      </button> */}
-    </div>
+    <Wrapper>
+      <Title>🛑 Упс! Щось пішло не так</Title>
+      <Message>
+        {error.message || "Невідома помилка. Спробуйте ще раз!"}
+      </Message>
+      <RetryButton onClick={reset}>
+        <RotateCcw size={20} />
+        Спробувати знову
+      </RetryButton>
+    </Wrapper>
   );
 }
