@@ -1,14 +1,26 @@
-import { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 import { Session } from "@/models/session";
 import { User } from "@/models/user";
-import { NextResponse } from "next/server";
 
 export const createErrorResponse = (status: number, message: string) => {
   return NextResponse.json({ status, message }, { status });
 };
 
-export const authCookie = async (request: NextRequest) => {
-  const accessToken = request.cookies.get("accessToken")?.value;
+export const authCookie = async (request: Request) => {
+  const cookieHeader = request.headers.get("cookie");
+
+  if (!cookieHeader) {
+    return createErrorResponse(401, "No cookies found");
+  }
+
+  const cookies = Object.fromEntries(
+    cookieHeader.split(";").map((cookie) => {
+      const [name, ...rest] = cookie.trim().split("=");
+      return [name, rest.join("=")];
+    })
+  );
+
+  const accessToken = cookies["accessToken"];
 
   if (!accessToken) {
     return createErrorResponse(401, "Please provide access token");

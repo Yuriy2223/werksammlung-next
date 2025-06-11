@@ -5,9 +5,6 @@ const nextConfig: NextConfig = {
   compiler: {
     styledComponents: true,
   },
-  // images: {
-  //   domains: ["localhost", "127.0.0.1"], // потім видали
-  // },
 };
 
 export default nextConfig;

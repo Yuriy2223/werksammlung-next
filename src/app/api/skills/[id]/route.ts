@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import mongoose from "mongoose";
 import { Skill } from "@/models/skill";
 import { authCookie } from "@/middlewares/authCookie";
@@ -6,12 +6,10 @@ import { updateSkillSchema } from "@/validation/skillSchema";
 import type { ValidationError } from "joi";
 
 export async function GET(
-  _: NextRequest,
-  // { params }: { params: { id: string } }
-  context: { params: { id: string } }
+  _req: Request,
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  // const { id } = params;
-  const { id } = await context.params;
+  const { id } = await params;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return NextResponse.json({ status: 400, message: "Invalid ID" });
@@ -30,13 +28,11 @@ export async function GET(
 }
 
 export async function PATCH(
-  req: NextRequest,
-  // { params }: { params: { id: string } }
-  context: { params: { id: string } }
+  req: Request,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   await authCookie(req);
-  // const { id } = params;
-  const { id } = await context.params;
+  const { id } = await params;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return NextResponse.json({ status: 400, message: "Invalid ID" });
@@ -77,13 +73,11 @@ export async function PATCH(
 }
 
 export async function DELETE(
-  req: NextRequest,
-  // { params }: { params: { id: string } }
-  context: { params: { id: string } }
+  req: Request,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   await authCookie(req);
-  // const { id } = params;
-  const { id } = await context.params;
+  const { id } = await params;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return NextResponse.json({ status: 400, message: "Invalid ID" });

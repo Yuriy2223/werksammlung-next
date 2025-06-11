@@ -1,9 +1,9 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { isValidObjectId } from "mongoose";
+import type { ValidationError } from "joi";
 import { connectToDatabase } from "@/lib/mongodb";
 import { Project } from "@/models/project";
 import { projectSchema, updateProjectSchema } from "@/validation/projectSchema";
-import type { ValidationError } from "joi";
 
 function validateObjectId(id: string): boolean {
   return isValidObjectId(id);
@@ -35,12 +35,12 @@ function handleError(error: unknown) {
 }
 
 export async function GET(
-  _req: NextRequest,
-  context: { params: { id: string } }
+  _req: Request,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   await connectToDatabase();
 
-  const { id } = context.params;
+  const { id } = await params;
 
   if (!validateObjectId(id)) {
     return NextResponse.json(
@@ -65,12 +65,12 @@ export async function GET(
 }
 
 export async function PUT(
-  req: NextRequest,
-  context: { params: { id: string } }
+  req: Request,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   await connectToDatabase();
 
-  const { id } = context.params;
+  const { id } = await params;
 
   if (!validateObjectId(id)) {
     return NextResponse.json(
@@ -101,12 +101,12 @@ export async function PUT(
 }
 
 export async function PATCH(
-  req: NextRequest,
-  context: { params: { id: string } }
+  req: Request,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   await connectToDatabase();
 
-  const { id } = context.params;
+  const { id } = await params;
 
   if (!validateObjectId(id)) {
     return NextResponse.json(
@@ -143,12 +143,12 @@ export async function PATCH(
 }
 
 export async function DELETE(
-  _req: NextRequest,
-  context: { params: { id: string } }
+  _req: Request,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   await connectToDatabase();
 
-  const { id } = context.params;
+  const { id } = await params;
 
   if (!validateObjectId(id)) {
     return NextResponse.json(
