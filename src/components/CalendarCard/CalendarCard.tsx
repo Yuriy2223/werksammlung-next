@@ -1,8 +1,8 @@
 import { parseISO, isSameDay, format } from "date-fns";
 import styled from "styled-components";
 import DatePicker from "react-datepicker";
-import { formatSec } from "./utils";
-import { Visit } from "./types";
+import { formatSec } from "../../utils/userPageUtils";
+import { Visit } from "@/types";
 
 const Card = styled.div`
   background: linear-gradient(135deg, #f9fafb, #ffffff);

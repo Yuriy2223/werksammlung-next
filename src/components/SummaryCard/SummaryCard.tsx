@@ -1,5 +1,5 @@
+import { formatSec } from "../../utils/userPageUtils";
 import styled from "styled-components";
-import { formatSec } from "./utils";
 
 const SummaryWrapper = styled.div`
   background: linear-gradient(145deg, #e6ecf3, #ffffff);

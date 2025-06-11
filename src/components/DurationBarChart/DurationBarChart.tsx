@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { formatSec } from "../../utils/userPageUtils";
 import {
   BarChart,
   Bar,
@@ -8,8 +10,6 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import styled from "styled-components";
-import { useState } from "react";
-import { formatSec } from "./utils";
 
 const Card = styled.div`
   background: linear-gradient(135deg, #f9fafb, #ffffff);

@@ -90,7 +90,6 @@ const Overlay = styled.div.withConfig({
   left: 0;
   right: 0;
   bottom: 0;
-  /* background-color: ${({ theme }) => theme.background || "#fff"}; */
   background-color: rgba(255, 255, 255, 0.4);
   opacity: ${({ active }) => (active ? 1 : 0)};
   pointer-events: none;

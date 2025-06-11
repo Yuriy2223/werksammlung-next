@@ -3,9 +3,9 @@
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useAppDispatch } from "@/redux/store";
-import { selectLoggedIn } from "@/redux/auth/selectors";
+// import { selectLoggedIn } from "@/redux/auth/selectors";
 import { selectProfile, selectLoading } from "@/redux/profile/selectors";
-import { refreshToken } from "@/redux/auth/operations";
+// import { refreshToken } from "@/redux/auth/operations";
 import { fetchProfile } from "@/redux/profile/operations";
 import { Loader } from "../loader/Loader";
 
@@ -13,13 +13,13 @@ export function AppGuard({ children }: { children: React.ReactNode }) {
   const dispatch = useAppDispatch();
   const profile = useSelector(selectProfile);
   const loading = useSelector(selectLoading);
-  const isLoggedIn = useSelector(selectLoggedIn);
+  // const isLoggedIn = useSelector(selectLoggedIn);
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      dispatch(refreshToken());
-    }
-  }, [dispatch, isLoggedIn]);
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     dispatch(refreshToken());
+  //   }
+  // }, [dispatch, isLoggedIn]);
 
   useEffect(() => {
     if (!profile && !loading) {

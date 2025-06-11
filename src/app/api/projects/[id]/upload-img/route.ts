@@ -4,13 +4,9 @@ import { uploadCloudinary } from "@/utils/uploadCloudinary";
 
 export const dynamic = "force-dynamic";
 
-export async function POST(
-  req: Request,
-  // { params }: { params: { id: string } }
-  context: { params: { id: string } }
-) {
-  // const { id } = params;
-  const { id } = await context.params;
+export async function POST(req: Request, context: { params: { id: string } }) {
+  // const { id } = await context.params;
+  const { id } = context.params;
 
   try {
     const formData = await req.formData();

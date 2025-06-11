@@ -20,7 +20,7 @@ export const metadata = {
   authors: [{ name: "Your Name" }],
   creator: "Your Name",
   icons: {
-    icon: "/favicon.webp",
+    icon: "/favicon.ico",
   },
 };
 

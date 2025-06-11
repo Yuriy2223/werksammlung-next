@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { sendEmail } from "@/lib/sendEmail";
+import { sendMeAnEmail } from "@/lib/email/sendMeAnEmail";
 import { contactMeSchema } from "@/validation/contactMeSchema";
 
 export async function POST(req: NextRequest) {
@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ errors: messages }, { status: 400 });
     }
 
-    await sendEmail(value);
+    await sendMeAnEmail(value);
 
     return NextResponse.json({ message: "Email sent successfully" });
   } catch (err) {
@@ -22,30 +22,3 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }
-
-// import { NextRequest, NextResponse } from "next/server";
-// import { sendEmail } from "@/lib/sendEmail";
-// import { contactMeSchema } from "@/validation/contactMeSchema";
-// import { ValidationError } from "joi";
-
-// export async function POST(req: NextRequest) {
-//   try {
-//     const body = await req.json();
-
-//     const value = await contactMeSchema.validateAsync(body, {
-//       abortEarly: false,
-//     });
-
-//     await sendEmail(value);
-
-//     return NextResponse.json({ message: "Email sent successfully" });
-//   } catch (err) {
-//     if (err instanceof ValidationError) {
-//       const messages = err.details.map((d) => d.message);
-//       return NextResponse.json({ errors: messages }, { status: 400 });
-//     }
-
-//     console.error("Email send error:", err);
-//     return NextResponse.json({ error: "Server error" }, { status: 500 });
-//   }
-// }

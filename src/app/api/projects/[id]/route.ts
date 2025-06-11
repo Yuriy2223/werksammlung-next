@@ -36,13 +36,11 @@ function handleError(error: unknown) {
 
 export async function GET(
   _req: NextRequest,
-  // { params }: { params: { id: string } }
   context: { params: { id: string } }
 ) {
   await connectToDatabase();
 
-  // const { id } = params;
-  const { id } = await context.params;
+  const { id } = context.params;
 
   if (!validateObjectId(id)) {
     return NextResponse.json(
@@ -68,13 +66,11 @@ export async function GET(
 
 export async function PUT(
   req: NextRequest,
-  // { params }: { params: { id: string } }
   context: { params: { id: string } }
 ) {
   await connectToDatabase();
 
-  // const { id } = params;
-  const { id } = await context.params;
+  const { id } = context.params;
 
   if (!validateObjectId(id)) {
     return NextResponse.json(
@@ -106,13 +102,11 @@ export async function PUT(
 
 export async function PATCH(
   req: NextRequest,
-  // { params }: { params: { id: string } }
   context: { params: { id: string } }
 ) {
   await connectToDatabase();
 
-  // const { id } = params;
-  const { id } = await context.params;
+  const { id } = context.params;
 
   if (!validateObjectId(id)) {
     return NextResponse.json(
@@ -150,13 +144,11 @@ export async function PATCH(
 
 export async function DELETE(
   _req: NextRequest,
-  // { params }: { params: { id: string } }
   context: { params: { id: string } }
 ) {
   await connectToDatabase();
 
-  // const { id } = params;
-  const { id } = await context.params;
+  const { id } = context.params;
 
   if (!validateObjectId(id)) {
     return NextResponse.json(
