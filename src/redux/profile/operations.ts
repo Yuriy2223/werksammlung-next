@@ -6,7 +6,7 @@ export const fetchProfile = createAsyncThunk<
   Profile,
   void,
   { rejectValue: string }
->("/profile", async (_, { rejectWithValue }) => {
+>("/profiles", async (_, { rejectWithValue }) => {
   try {
     return await fetchProfileApi();
   } catch (error) {
