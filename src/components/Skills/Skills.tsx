@@ -25,7 +25,6 @@ import {
 
 export const Skills = () => {
   const { t, i18n } = useTranslation();
-  // const lang = i18n.language.toLowerCase() as Language;
   const lang = i18n.language as Language;
   const profile = useSelector(selectProfile);
   const viewportAmount = useViewportAmount();
