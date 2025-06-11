@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { connectToDatabase } from "@/lib/mongodb";
 import { Profile } from "@/models/profile";
 import { Session } from "@/models/session";
@@ -11,16 +11,23 @@ const allowedImageTypes = [
   "image/webp",
 ];
 
+function parseCookies(header: string | null): Record<string, string> {
+  if (!header) return {};
+  return Object.fromEntries(
+    header.split(";").map((c) => {
+      const [k, ...v] = c.trim().split("=");
+      return [k, v.join("=")];
+    })
+  );
+}
+
 export async function POST(
-  req: NextRequest,
-  // context: { params: { profileId: string } }
-  context: { params: Promise<{ profileId: string }> }
+  req: Request,
+  { params }: { params: Promise<{ profileId: string }> }
 ) {
   try {
     await connectToDatabase();
-
-    // const profileId = context.params.profileId;
-    const { profileId } = await context.params;
+    const { profileId } = await params;
 
     if (!isValidObjectId(profileId)) {
       return NextResponse.json(
@@ -37,8 +44,9 @@ export async function POST(
       );
     }
 
-    // Авторизація через cookies
-    const accessToken = req.cookies.get("accessToken")?.value;
+    const cookies = parseCookies(req.headers.get("cookie"));
+    const accessToken = cookies["accessToken"];
+
     if (!accessToken) {
       return NextResponse.json(
         { message: "Unauthorized: No access token" },
@@ -98,16 +106,12 @@ export async function POST(
 }
 
 export async function GET(
-  _req: NextRequest,
-  // context: { params: { profileId: string } }
-  context: { params: Promise<{ profileId: string }> }
+  _req: Request,
+  { params }: { params: Promise<{ profileId: string }> }
 ) {
   try {
     await connectToDatabase();
-
-    // const profileId = context.params.profileId;
-    const { profileId } = await context.params;
-
+    const { profileId } = await params;
     if (!isValidObjectId(profileId)) {
       return NextResponse.json(
         { message: "Invalid profile ID format" },

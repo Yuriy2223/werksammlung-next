@@ -1,19 +1,17 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { connectToDatabase } from "@/lib/mongodb";
 import { Profile } from "@/models/profile";
 import { Session } from "@/models/session";
 import { isValidObjectId } from "mongoose";
 
 export async function POST(
-  req: NextRequest,
-  context: { params: Promise<{ profileId: string }> }
+  req: Request,
+  { params }: { params: Promise<{ profileId: string }> }
 ) {
   await connectToDatabase();
 
-  // const profileId = context.params.profileId;
-  const { profileId } = await context.params;
+  const { profileId } = await params;
 
-  // Перевірка профілю
   if (!isValidObjectId(profileId)) {
     return NextResponse.json(
       { message: "Invalid profile ID format" },
@@ -26,8 +24,22 @@ export async function POST(
     return NextResponse.json({ message: "Profile not found" }, { status: 404 });
   }
 
-  // Авторизація через cookies
-  const accessToken = req.cookies.get("accessToken")?.value;
+  const cookieHeader = req.headers.get("cookie");
+  if (!cookieHeader) {
+    return NextResponse.json(
+      { message: "Unauthorized: No access token" },
+      { status: 401 }
+    );
+  }
+
+  const cookies = Object.fromEntries(
+    cookieHeader.split(";").map((c) => {
+      const [k, ...v] = c.trim().split("=");
+      return [k, v.join("=")];
+    })
+  );
+
+  const accessToken = cookies["accessToken"];
   if (!accessToken) {
     return NextResponse.json(
       { message: "Unauthorized: No access token" },
@@ -43,7 +55,6 @@ export async function POST(
     );
   }
 
-  // Отримання файлу з formData
   const formData = await req.formData();
   const file = formData.get("cv") as File;
 
@@ -78,12 +89,12 @@ export async function POST(
 }
 
 export async function GET(
-  _req: NextRequest,
-  context: { params: Promise<{ profileId: string }> }
+  _req: Request,
+  { params }: { params: Promise<{ profileId: string }> }
 ) {
   await connectToDatabase();
 
-  const { profileId } = await context.params;
+  const { profileId } = await params;
 
   if (!isValidObjectId(profileId)) {
     return NextResponse.json(
@@ -104,5 +115,8 @@ export async function GET(
     `inline; filename="${profile.viewCV.filename}"`
   );
 
-  return new NextResponse(profile.viewCV.data.buffer, { status: 200, headers });
+  return new NextResponse(profile.viewCV.data.buffer, {
+    status: 200,
+    headers,
+  });
 }
