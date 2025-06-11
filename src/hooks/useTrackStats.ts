@@ -1,6 +1,6 @@
+import axios from "axios";
 import { useEffect } from "react";
 import { publicInstance } from "../services/httpClient";
-import axios from "axios";
 
 export const useTrackStats = () => {
   useEffect(() => {
