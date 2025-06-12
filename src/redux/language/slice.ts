@@ -16,7 +16,7 @@ const languageSlice = createSlice({
   reducers: {
     setLanguage: (state, action: PayloadAction<Language>) => {
       state.currentLanguage = action.payload;
-      initI18n(action.payload); // додаємо цей рядок
+      initI18n(action.payload);
     },
 
     switchLanguage: (state) => {
@@ -24,7 +24,7 @@ const languageSlice = createSlice({
       const currentIndex = languages.indexOf(state.currentLanguage);
       const nextLang = languages[(currentIndex + 1) % languages.length];
       state.currentLanguage = nextLang;
-      initI18n(nextLang); // додаємо цей рядок
+      initI18n(nextLang);
     },
   },
 });
