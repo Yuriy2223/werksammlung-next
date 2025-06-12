@@ -66,7 +66,8 @@ export const ModalSignIn = () => {
   const onSubmit = async (data: LoginData) => {
     try {
       await dispatch(loginUser(data)).unwrap();
-      toast.success(t("modal.login.message.yes") || "Login successful!");
+      // toast.success(t("modal.login.message.yes") || "Login successful!");
+      toast.success(t("modal.login.message.yes"));
       reset();
       clearErrors();
       dispatch(closeModal());
