@@ -59,7 +59,7 @@ import { Button } from "@/shared/Button";
 import { useAppDispatch } from "@/redux/store";
 import { selectTheme } from "@/redux/theme/selectors";
 import { setTheme } from "@/redux/theme/slice";
-import PageTransitionOverlay from "../LanguageSwitcher/PageTransitionOverlay";
+import PageTransitionOverlay from "../Language/PageTransitionOverlay";
 import { useState } from "react";
 
 const themeOrder: ThemeType[] = ["dark", "grey", "blue", "green"];
