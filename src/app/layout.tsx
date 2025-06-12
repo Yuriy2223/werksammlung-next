@@ -2,7 +2,7 @@ import StyledComponentsRegistry from "@/lib/registry";
 import { Providers } from "@/components/Providers/Providers";
 
 export const metadata = {
-  title: "Fullstack Developer Portfolio | Your Name",
+  title: "Fullstack Developer Portfolio | Yuriy Shukan",
   description:
     "Portfolio of a fullstack developer specializing in modern web applications with React, Next.js, Node.js, and TypeScript.",
   keywords: [
@@ -17,8 +17,8 @@ export const metadata = {
     "backend",
     "software engineer",
   ],
-  authors: [{ name: "Your Name" }],
-  creator: "Your Name",
+  authors: [{ name: "Yuriy Shukan" }],
+  creator: "Yuriy Shukan",
   icons: {
     icon: "/favicon.ico",
   },

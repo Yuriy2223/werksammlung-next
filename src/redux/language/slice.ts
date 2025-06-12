@@ -1,3 +1,4 @@
+import { initI18n } from "@/lib/i18n/i18n";
 import { Language } from "@/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
@@ -15,6 +16,7 @@ const languageSlice = createSlice({
   reducers: {
     setLanguage: (state, action: PayloadAction<Language>) => {
       state.currentLanguage = action.payload;
+      initI18n(action.payload); // додаємо цей рядок
     },
 
     switchLanguage: (state) => {
@@ -22,6 +24,7 @@ const languageSlice = createSlice({
       const currentIndex = languages.indexOf(state.currentLanguage);
       const nextLang = languages[(currentIndex + 1) % languages.length];
       state.currentLanguage = nextLang;
+      initI18n(nextLang); // додаємо цей рядок
     },
   },
 });

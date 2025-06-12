@@ -4,9 +4,9 @@ import { useSelector } from "react-redux";
 import { useAppDispatch } from "../../redux/store";
 import { openModal } from "../../redux/modal/slice";
 import { ThemeSwitcher } from "../Theme/ThemeSwitcher";
-import { LanguageSwitcher } from "../LanguageSwitcher/LanguageSwitcher";
 import { BtnLogin, UserActionsWrapper } from "./UserActions.styled";
 import { selectLoggedIn } from "../../redux/auth/selectors";
+import { LanguageSwitcher } from "../Language/LanguageSwitcher";
 
 interface UserActionsProps {
   closeMenu?: () => void;
