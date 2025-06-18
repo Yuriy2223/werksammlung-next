@@ -7,7 +7,7 @@ import { useAppDispatch } from "@/redux/store";
 import { selectProfile, selectLoading } from "@/redux/profile/selectors";
 // import { refreshToken } from "@/redux/auth/operations";
 import { fetchProfile } from "@/redux/profile/operations";
-import { Loader } from "../loader/Loader";
+import { Loader } from "../Loader/Loader";
 
 export function AppGuard({ children }: { children: React.ReactNode }) {
   const dispatch = useAppDispatch();
