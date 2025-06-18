@@ -1,3 +1,4 @@
+import { easeOut } from "framer-motion";
 import {
   Code,
   GitCommit,
@@ -48,7 +49,9 @@ export const itemVariants = {
     opacity: 1,
     transition: {
       duration: 0.5,
-      ease: "easeOut",
+      // ease: "easeOut",
+      // ease: [0.42, 0, 0.58, 1],
+      ease: easeOut,
     },
   },
 };
@@ -73,7 +76,8 @@ export const cardVariant = {
     transition: {
       duration: 0.8,
       // ease: [0.22, 1, 0.36, 1],
-      ease: "easeOut",
+      // ease: "easeOut",
+      ease: easeOut,
     },
   },
 };
@@ -91,6 +95,7 @@ export const itemVariant = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.4, ease: "easeOut" },
+    // transition: { duration: 0.4, ease: "easeOut" },
+    transition: { duration: 0.4, ease: easeOut },
   },
 };
