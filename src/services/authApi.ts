@@ -93,15 +93,15 @@ export const refreshTokenApi = async (): Promise<void> => {
   });
 };
 
-export const currentUserApi = async (): Promise<User> => {
-  const res = await createReduxApiCall<{ user: User }>({
-    method: "get",
-    url: "/api/users/current",
-    headers: new AxiosHeaders({ "Content-Type": "application/json" }),
-  });
+// export const currentUserApi = async (): Promise<User> => {
+//   const res = await createReduxApiCall<{ user: User }>({
+//     method: "get",
+//     url: "/api/users/current",
+//     headers: new AxiosHeaders({ "Content-Type": "application/json" }),
+//   });
 
-  return res.user;
-};
+//   return res.user;
+// };
 
 export const requestPasswordResetApi = async (
   data: RequestResetData
