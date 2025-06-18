@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useAppDispatch } from "@/redux/store";
 import { selectProfile, selectLoading } from "@/redux/profile/selectors";
 import { fetchProfile } from "@/redux/profile/operations";
-import { Loader } from "../Loader/Loader";
+import { Loader } from "../Spiner/Loader";
 
 export function AppGuard({ children }: { children: React.ReactNode }) {
   const dispatch = useAppDispatch();
