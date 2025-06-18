@@ -49,8 +49,6 @@ export const itemVariants = {
     opacity: 1,
     transition: {
       duration: 0.5,
-      // ease: "easeOut",
-      // ease: [0.42, 0, 0.58, 1],
       ease: easeOut,
     },
   },
@@ -59,15 +57,12 @@ export const containVariants = {
   hidden: {},
   visible: {
     transition: {
-      // delayChildren: 0.4,
       delayChildren: 0.2,
-      // staggerChildren: 0.6,
       staggerChildren: 0.4,
     },
   },
 };
 export const cardVariant = {
-  // hidden: { opacity: 0, y: 50, scale: 0.95 },
   hidden: { opacity: 0, y: 50, scale: 1 },
   visible: {
     opacity: 1,
@@ -75,8 +70,6 @@ export const cardVariant = {
     scale: 1,
     transition: {
       duration: 0.8,
-      // ease: [0.22, 1, 0.36, 1],
-      // ease: "easeOut",
       ease: easeOut,
     },
   },
@@ -95,7 +88,6 @@ export const itemVariant = {
   visible: {
     opacity: 1,
     x: 0,
-    // transition: { duration: 0.4, ease: "easeOut" },
     transition: { duration: 0.4, ease: easeOut },
   },
 };
