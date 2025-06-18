@@ -1,23 +1,21 @@
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-// import { Languages, Project } from "../../App.type";
 import { Title } from "../../shared/Title";
 import { SubTitle } from "../../shared/SubTitle";
 import { ProjectCard } from "../ProjectCard/ProjectCard";
 import { selectProfile } from "../../redux/profile/selectors";
 import { useViewportAmount } from "../../hooks/useViewportAmount";
 import { itemVariants } from "../../shared/Animations.const";
+import { Language, Project } from "@/types";
 import {
   ProjectItem,
   ProjectsContainer,
   ProjectsList,
   ProjectsSection,
 } from "./Projects.styled";
-import { Language, Project } from "@/types";
 
 export const Projects = () => {
   const { t, i18n } = useTranslation();
-  // const lang = i18n.language.toLowerCase() as Languages;
   const lang = i18n.language as Language;
   const profile = useSelector(selectProfile);
   const projects = profile?.projects || [];
