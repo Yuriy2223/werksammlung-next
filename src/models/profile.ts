@@ -80,6 +80,5 @@ profileSchema.methods.toJSON = function () {
   return obj;
 };
 
-// export const Profile = mongoose.model("Profile", profileSchema);
 export const Profile =
   mongoose.models.Profile || mongoose.model("Profile", profileSchema);
