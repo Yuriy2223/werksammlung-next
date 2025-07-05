@@ -65,8 +65,6 @@ profileSchema.methods.toJSON = function () {
       obj.avatarUrl.contentType
     };base64,${obj.avatarUrl.data.toString("base64")}`;
   }
-  //  Повертаємо тільки URL до аватарки
-  // obj.avatarUrl = obj.avatarUrl?.data ? `/api/uploads/avatar/${obj._id}` : null;
 
   if (obj.viewCV?.data) {
     obj.viewCV = `/api/uploads/cv/${obj._id}`;
@@ -80,6 +78,5 @@ profileSchema.methods.toJSON = function () {
   return obj;
 };
 
-// export const Profile = mongoose.model("Profile", profileSchema);
 export const Profile =
   mongoose.models.Profile || mongoose.model("Profile", profileSchema);
