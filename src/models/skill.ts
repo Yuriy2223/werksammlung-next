@@ -31,6 +31,5 @@ const skillSchema = new mongoose.Schema(
   }
 );
 
-// export const Skill = mongoose.model("Skill", skillSchema);
 export const Skill =
   mongoose.models.Skill || mongoose.model("Skill", skillSchema);
