@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { Project } from "@/models/project";
-import { uploadCloudinary } from "@/utils/uploadCloudinary";
+import { uploadImage } from "@/utils/uploadImages";
 
 export const dynamic = "force-dynamic";
 
@@ -23,9 +23,8 @@ export async function POST(
     const arrayBuffer = await file.arrayBuffer();
     const base64 = Buffer.from(arrayBuffer).toString("base64");
     const dataUri = `data:${file.type};base64,${base64}`;
-
-    const uploadResult = await uploadCloudinary(dataUri);
-    const imgUrl = uploadResult.secure_url;
+    const uploadResult = await uploadImage(dataUri);
+    const imgUrl = uploadResult;
 
     const updatedProject = await Project.findByIdAndUpdate(
       id,
