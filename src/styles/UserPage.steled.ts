@@ -1,10 +1,7 @@
 import { Container } from "@/shared/Container";
 import styled from "styled-components";
 
-export const UserPageContainer = styled(Container)`
-  /* display: flex;
-  flex-direction: column; */
-`;
+export const UserPageContainer = styled(Container)``;
 export const UserPageTitle = styled.h1`
   text-align: center;
   font-size: 2.2rem;
