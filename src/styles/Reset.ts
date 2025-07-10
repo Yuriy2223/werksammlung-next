@@ -12,8 +12,6 @@ export const Reset = css`
     box-sizing: inherit;
     padding: 0;
     margin: 0;
-    /* overflow-x: hidden; */
-    /* outline: 1px solid red;  */
   }
 
   body {
