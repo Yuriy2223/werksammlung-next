@@ -46,7 +46,6 @@ export const AboutWrapBottom = styled.div`
 
   @media (min-width: 1280px) {
     padding: 40px 40px 0;
-
     font-size: 20px;
 
     span {
@@ -64,6 +63,7 @@ export const WrapperImg = styled.div`
   height: 290px;
   border-radius: 12px;
   overflow: hidden;
+  border-radius: 50%;
 
   @media (min-width: 768px) {
     width: 440px;
