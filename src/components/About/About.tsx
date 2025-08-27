@@ -62,14 +62,6 @@ export const About = () => {
                 />
               )}
             </WrapperImg>
-            {/* <WrapperImg>
-              <Image
-                src="/favicon.ico"
-                alt={`${fullName} portrait`}
-                fill
-                style={{ objectFit: "contain" }}
-              />
-            </WrapperImg> */}
           </motion.div>
 
           <motion.div
