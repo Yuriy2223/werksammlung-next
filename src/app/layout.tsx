@@ -2,26 +2,11 @@ import StyledComponentsRegistry from "@/lib/registry";
 import { Providers } from "@/components/Providers/Providers";
 
 export const metadata = {
-  title: "Fullstack Developer Portfolio | Yuriy Shukan",
+  title: "Portfolio Yuriy Shukan",
   description:
     "Portfolio of a fullstack developer specializing in modern web applications with React, Next.js, Node.js, and TypeScript.",
-  keywords: [
-    "fullstack developer",
-    "portfolio",
-    "React",
-    "Next.js",
-    "Node.js",
-    "TypeScript",
-    "web development",
-    "frontend",
-    "backend",
-    "software engineer",
-  ],
   authors: [{ name: "Yuriy Shukan" }],
-  creator: "Yuriy Shukan",
-  icons: {
-    icon: "/favicon.ico",
-  },
+  icons: { icon: "/favicon.ico" },
 };
 
 export default function RootLayout({
@@ -31,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body suppressHydrationWarning>
         <StyledComponentsRegistry>
           <Providers>{children}</Providers>
         </StyledComponentsRegistry>
