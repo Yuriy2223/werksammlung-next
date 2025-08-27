@@ -58,10 +58,18 @@ export const About = () => {
                   src={profile.avatarUrl}
                   alt={`${fullName} portrait`}
                   fill
-                  style={{ objectFit: "cover" }}
+                  style={{ objectFit: "contain" }}
                 />
               )}
             </WrapperImg>
+            {/* <WrapperImg>
+              <Image
+                src="/favicon.ico"
+                alt={`${fullName} portrait`}
+                fill
+                style={{ objectFit: "contain" }}
+              />
+            </WrapperImg> */}
           </motion.div>
 
           <motion.div
