@@ -24,14 +24,16 @@ export const iconMap: Record<string, React.ComponentType> = {
   Postman: Network,
   Firebase: Cloud,
   Figma: Palette,
-  "VS Code": FileCode,
   Vite: Package,
   MongoDB: Database,
-  "Node.js": Server,
   Express: Network,
   Redux: Repeat,
   Compass: Locate,
   Docker: Cloud,
+  "Node.js": Server,
+  "VS Code": FileCode,
+  "Next.js": Repeat,
+  "Artificial Intelligence": Network,
 };
 export const containerVariants = {
   hidden: {},
