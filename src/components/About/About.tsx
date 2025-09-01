@@ -34,7 +34,7 @@ export const About = () => {
 
   const handleOpenCV = () => {
     if (!profile?.viewCV) {
-      console.warn("CV is not available");
+      // console.warn("CV is not available");
       return;
     }
     const url = profile.viewCV;
@@ -62,14 +62,6 @@ export const About = () => {
                 />
               )}
             </WrapperImg>
-            {/* <WrapperImg>
-              <Image
-                src="/favicon.ico"
-                alt={`${fullName} portrait`}
-                fill
-                style={{ objectFit: "contain" }}
-              />
-            </WrapperImg> */}
           </motion.div>
 
           <motion.div
