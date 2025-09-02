@@ -22,7 +22,7 @@ type Props = {
 
 const VisitsLineChartByMonth = ({ data }: Props) => (
   <Card>
-    <h3>📊 Відвідування по місяцях</h3>
+    <h3>📊 Visits by month</h3>
     <ResponsiveContainer width="100%" height={240}>
       <LineChart data={data}>
         <CartesianGrid strokeDasharray="3 3" />
