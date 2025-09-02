@@ -35,8 +35,8 @@ const VisitsLineChartByMonth = ({ data }: Props) => (
         />
         <YAxis />
         <Tooltip
-          labelFormatter={(label) => `Місяць: ${label}`}
-          formatter={(value: number) => [`${value}`, "Відвідувань"]}
+          labelFormatter={(label) => `Month: ${label}`}
+          formatter={(value: number) => [`${value}`, "Visits"]}
         />
         <Line type="monotone" dataKey="count" stroke="#6c5ce7" />
       </LineChart>
