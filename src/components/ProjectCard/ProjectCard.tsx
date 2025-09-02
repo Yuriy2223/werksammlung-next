@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Github, Globe } from "lucide-react";
 import { Language, Project } from "@/types";
-// import { Languages, Project } from "../../App.type";
 import {
   BackFace,
   CardWrapper,
@@ -30,12 +29,6 @@ const isTouchDevice = () => {
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project, lang }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
-
-  // const handleClick = () => {
-  //   if (window.matchMedia("(hover: none)").matches) {
-  //     setIsFlipped((prev) => !prev);
-  //   }
-  // };
 
   const handleClick = () => {
     if (isTouchDevice()) {
