@@ -70,7 +70,7 @@ const DurationBarChart = ({ data }: Props) => {
 
   return (
     <Card>
-      <Title>Тривалість відвідувань</Title>
+      <Title>Duration of visits</Title>
 
       <FilterBar>
         {(["day", "week", "month"] as Period[]).map((p) => (
