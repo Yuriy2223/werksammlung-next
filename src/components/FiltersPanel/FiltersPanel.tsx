@@ -111,7 +111,7 @@ export const FiltersPanel = ({
   return (
     <FiltersWrapper>
       <DateGroup>
-        <DateLabel htmlFor="start-date">Фільтр з:</DateLabel>
+        <DateLabel htmlFor="start-date">Filter by:</DateLabel>
         <DatePickerWrapper>
           <Calendar />
           <DatePicker
@@ -143,7 +143,7 @@ export const FiltersPanel = ({
       </DateGroup>
 
       <ResetButton onClick={handleReset}>
-        <XCircle /> Скинути
+        <XCircle /> Cast
       </ResetButton>
     </FiltersWrapper>
   );
