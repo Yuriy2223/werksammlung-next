@@ -92,7 +92,7 @@ const CalendarCard = ({ selectedDay, onSelect, visits }: Props) => {
 
   return (
     <Card>
-      <Title>📅 Календар з відвідуваннями</Title>
+      <Title>📅 Calendar with visits</Title>
       <ContentWrapper>
         <CalendarWrapper>
           <DatePicker
@@ -107,10 +107,10 @@ const CalendarCard = ({ selectedDay, onSelect, visits }: Props) => {
         {selectedDay && (
           <InfoWrapper>
             <Subtitle>
-              📆 Візити на {format(selectedDay, "dd.MM.yyyy")}
+              📆 Visits to {format(selectedDay, "dd.MM.yyyy")}
             </Subtitle>
             {filtered.length === 0 ? (
-              <p>Немає даних</p>
+              <p>No data</p>
             ) : (
               <InfoList>
                 {filtered.map((v) => (
@@ -121,7 +121,7 @@ const CalendarCard = ({ selectedDay, onSelect, visits }: Props) => {
               </InfoList>
             )}
             <ResetButton onClick={() => onSelect(null)}>
-              Очистити вибір
+              Clear selection
             </ResetButton>
           </InfoWrapper>
         )}

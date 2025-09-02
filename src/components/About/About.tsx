@@ -34,7 +34,6 @@ export const About = () => {
 
   const handleOpenCV = () => {
     if (!profile?.viewCV) {
-      // console.warn("CV is not available");
       return;
     }
     const url = profile.viewCV;

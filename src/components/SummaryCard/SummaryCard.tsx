@@ -35,16 +35,16 @@ type Props = {
 export const SummaryCard = ({ count, min, avg, max }: Props) => (
   <SummaryWrapper>
     <Stat>
-      Всього візитів: <strong>{count}</strong>
+      Total visits: <strong>{count}</strong>
     </Stat>
     <Stat>
-      Мінімальна тривалість: <strong>{formatSec(min)}</strong>
+      Minimum duration:<strong>{formatSec(min)}</strong>
     </Stat>
     <Stat>
-      Середня тривалість: <strong>{formatSec(avg)}</strong>
+      Average duration:<strong>{formatSec(avg)}</strong>
     </Stat>
     <Stat>
-      Максимальна тривалість: <strong>{formatSec(max)}</strong>
+      Maximum duration:<strong>{formatSec(max)}</strong>
     </Stat>
   </SummaryWrapper>
 );

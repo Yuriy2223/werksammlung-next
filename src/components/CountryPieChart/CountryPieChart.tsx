@@ -39,7 +39,7 @@ type Props = {
 
 const CountryPieChart = ({ data }: Props) => (
   <Card>
-    <Title>Країни користувачів</Title>
+    <Title>User countries</Title>
     <ResponsiveContainer width="100%" height={260}>
       <PieChart>
         <Pie

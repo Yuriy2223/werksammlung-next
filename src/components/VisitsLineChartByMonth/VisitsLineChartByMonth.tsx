@@ -22,7 +22,7 @@ type Props = {
 
 const VisitsLineChartByMonth = ({ data }: Props) => (
   <Card>
-    <h3>📊 Відвідування по місяцях</h3>
+    <h3>📊 Visits by month</h3>
     <ResponsiveContainer width="100%" height={240}>
       <LineChart data={data}>
         <CartesianGrid strokeDasharray="3 3" />
@@ -35,8 +35,8 @@ const VisitsLineChartByMonth = ({ data }: Props) => (
         />
         <YAxis />
         <Tooltip
-          labelFormatter={(label) => `Місяць: ${label}`}
-          formatter={(value: number) => [`${value}`, "Відвідувань"]}
+          labelFormatter={(label) => `Month: ${label}`}
+          formatter={(value: number) => [`${value}`, "Visits"]}
         />
         <Line type="monotone" dataKey="count" stroke="#6c5ce7" />
       </LineChart>

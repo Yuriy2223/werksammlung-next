@@ -1,5 +1,4 @@
 import React from "react";
-// import { useLocation } from "react-router-dom";
 import { usePathname } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import { NavList } from "./Navigation.styled";
@@ -14,11 +13,8 @@ export const Navigation: React.FC<NavigationProps> = ({
   onNavClick,
 }) => {
   const { t } = useTranslation();
-  // const location = useLocation();
   const pathname = usePathname();
-  // if (location.pathname.startsWith("/user")) {
-  //   return null;
-  // }
+
   if (pathname?.startsWith("/user")) {
     return null;
   }
