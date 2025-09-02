@@ -32,49 +32,6 @@ export async function GET() {
   });
 }
 
-// export async function POST(req: NextRequest) {
-//   let ip = req.headers.get("x-forwarded-for") || "8.8.8.8";
-
-//   if (ip.includes(",")) {
-//     ip = ip.split(",")[0].trim();
-//   }
-
-//   if (
-//     !ip ||
-//     ip === "::1" ||
-//     ip.startsWith("127.") ||
-//     ip.startsWith("::ffff:127.")
-//   ) {
-//     ip = "8.8.8.8";
-//   }
-
-//   const country = await getCountryByIP(ip);
-
-//   let body;
-//   try {
-//     body = await req.json();
-//   } catch {
-//     return NextResponse.json(
-//       { error: "Invalid or missing JSON body" },
-//       { status: 400 }
-//     );
-//   }
-
-//   // const body = await req.json();
-//   const timeSpent = Number(body.timeSpent);
-//   if (isNaN(timeSpent) || timeSpent < 0) {
-//     return NextResponse.json(
-//       { error: "Invalid timeSpent value" },
-//       { status: 400 }
-//     );
-//   }
-
-//   const stat = new Stat({ country, timeSpent });
-//   await stat.save();
-
-//   return NextResponse.json(stat, { status: 201 });
-// }
-
 export async function POST(req: NextRequest) {
   const url = new URL(req.url);
   const id = url.searchParams.get("id");
