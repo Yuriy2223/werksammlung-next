@@ -41,8 +41,7 @@ export default function User() {
         await new Promise((r) => setTimeout(r, 600));
         const res = await privateInstance.get("/api/stats");
         setStats(res.data);
-      } catch (err) {
-        console.error("Помилка завантаження статистики", err);
+      } catch {
       } finally {
         setLoading(false);
       }
@@ -52,9 +51,9 @@ export default function User() {
   }, [isLoggedIn, router]);
 
   if (!isLoggedIn) return null;
-  if (loading) return <UserPageContainer>Завантаження...</UserPageContainer>;
+  if (loading) return <UserPageContainer>Loading...</UserPageContainer>;
   if (!stats)
-    return <UserPageContainer>Статистика недоступна...</UserPageContainer>;
+    return <UserPageContainer>Statistics unavailable...</UserPageContainer>;
 
   const safeParseISO = (dateStr?: string | null) => {
     if (!dateStr) return null;
@@ -134,7 +133,7 @@ export default function User() {
 
   return (
     <UserPageContainer>
-      <UserPageTitle>Аналітика портфоліо</UserPageTitle>
+      <UserPageTitle>Portfolio analytics</UserPageTitle>
       <FiltersPanel {...{ startDate, endDate, setStartDate, setEndDate }} />
       <SummaryCard count={filterVisits.length} min={min} avg={avg} max={max} />
       <ChartGrid>
