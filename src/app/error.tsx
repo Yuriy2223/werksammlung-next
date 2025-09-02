@@ -52,18 +52,16 @@ export default function GlobalError({
   reset: () => void;
 }) {
   useEffect(() => {
-    console.error("🌍 Global Error:", error);
+    // console.error("🌍 Global Error:", error);
   }, [error]);
 
   return (
     <Wrapper>
-      <Title>🛑 Упс! Щось пішло не так</Title>
-      <Message>
-        {error.message || "Невідома помилка. Спробуйте ще раз!"}
-      </Message>
+      <Title>🛑 Oops! Something went wrong.</Title>
+      <Message>{error.message || "Unknown error. Try again!"}</Message>
       <RetryButton onClick={reset}>
         <RotateCcw size={20} />
-        Спробувати знову
+        Try again
       </RetryButton>
     </Wrapper>
   );
